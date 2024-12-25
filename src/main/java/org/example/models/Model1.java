@@ -1,22 +1,14 @@
 package org.example.models;
 
-import org.example.annotations.Bind;
+import java.util.Arrays;
 
-public class Model1 {
-    @Bind private int LL; // number of years
-    @Bind private double[] twKI; // the growth rate of private consumption
-    @Bind private double[] twKS; // the growth rate of public consumption
-    @Bind private double[] twINW; // investment growth
-    @Bind private double[] twEKS; // export growth
-    @Bind private double[] twIMP; // import growth
-    @Bind private double[] KI; // private consumption
-    @Bind private double[] KS; // public consumption
-    @Bind private double[] INW; // investments
-    @Bind private double[] EKS; // export
-    @Bind private double[] IMP; // import
-    @Bind private double[] PKB; // GDP
-    private double temp; // this field is not associated with the data model or with the results
-    public Model1() {}
+public class Model1 extends Model{
+
+    public Model1() {
+        System.out.println("Model1 Constructor");
+    }
+
+    @Override
     public void run() {
         PKB = new double[LL];
         PKB[0] = KI[0] + KS[0] + INW[0] + EKS[0] - IMP[0];
@@ -28,5 +20,21 @@ public class Model1 {
             IMP[t] = twIMP[t] * IMP[t - 1];
             PKB[t] = KI[t] + KS[t] + INW[t] + EKS[t] - IMP[t];
         }
+    }
+
+    @Override
+    public String toString() {
+        return "LATA:" + Arrays.toString(lATA) + "\n"
+                + "twKI:" + Arrays.toString(twKI) + "\n"
+                + "twKS:" + Arrays.toString(twKS) + "\n"
+                + "twINW:" + Arrays.toString(twINW) + "\n"
+                + "twEKS:" + Arrays.toString(twEKS) + "\n"
+                + "twIMP:" + Arrays.toString(twIMP) + "\n"
+                + "KI:" + Arrays.toString(KI) + "\n"
+                + "KS:" + Arrays.toString(KS) + "\n"
+                + "INW:" + Arrays.toString(INW) + "\n"
+                + "EKS:" + Arrays.toString(EKS) + "\n"
+                + "IMP:" + Arrays.toString(IMP) + "\n"
+                + "PKB:" + Arrays.toString(PKB) + "\n";
     }
 }
