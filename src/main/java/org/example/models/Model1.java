@@ -1,7 +1,5 @@
 package org.example.models;
 
-import java.util.Arrays;
-
 public class Model1 extends Model{
 
     public Model1() {
@@ -20,21 +18,7 @@ public class Model1 extends Model{
             IMP[t] = twIMP[t] * IMP[t - 1];
             PKB[t] = KI[t] + KS[t] + INW[t] + EKS[t] - IMP[t];
         }
-    }
 
-    @Override
-    public String toString() {
-        return "LATA:" + Arrays.toString(lATA) + "\n"
-                + "twKI:" + Arrays.toString(twKI) + "\n"
-                + "twKS:" + Arrays.toString(twKS) + "\n"
-                + "twINW:" + Arrays.toString(twINW) + "\n"
-                + "twEKS:" + Arrays.toString(twEKS) + "\n"
-                + "twIMP:" + Arrays.toString(twIMP) + "\n"
-                + "KI:" + Arrays.toString(KI) + "\n"
-                + "KS:" + Arrays.toString(KS) + "\n"
-                + "INW:" + Arrays.toString(INW) + "\n"
-                + "EKS:" + Arrays.toString(EKS) + "\n"
-                + "IMP:" + Arrays.toString(IMP) + "\n"
-                + "PKB:" + Arrays.toString(PKB) + "\n";
+        refreshParameters();
     }
 }

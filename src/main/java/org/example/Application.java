@@ -11,12 +11,12 @@ public class Application {
         String scriptDir = "src//main//resources//scripts//";
 
         Controller ctl = new Controller("org.example.models.Model1");
-        ctl.readDataFrom(dataDir + "data2.txt")
+        ctl.readDataFrom(dataDir + "data1.txt")
                 .runModel();
         String res = ctl.getResultAsTsv();
         System.out.println(res);
 
-        ctl.readDataFrom(dataDir + "data2.txt")
+        ctl.readDataFrom(dataDir + "data1.txt")
                 .runModel()
                 .runScriptFromFile(scriptDir + "script1.groovy");
         System.out.println(ctl.getResultAsTsv());
