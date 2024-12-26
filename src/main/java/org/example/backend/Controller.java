@@ -2,8 +2,6 @@ package org.example.backend;
 
 import org.example.models.Model;
 
-import java.util.Arrays;
-
 public class Controller {
     private final Model model;
 
@@ -43,11 +41,9 @@ public class Controller {
 
     public void runScript(String script){
         String firstWord = script.split(" ", 2)[0];
-        System.out.println(firstWord);
         ScriptRunner scriptRunner = new ScriptRunner(model);
         double[] d = scriptRunner.run(script);
         model.addToParameters(firstWord, d);
-        System.out.println(model.getParameters());
     }
 
     public String getResultAsTsv(){

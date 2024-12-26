@@ -2,11 +2,12 @@ package org.example.models;
 
 import org.example.annotations.Bind;
 
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Model {
-    private Map<String, Object> parameters;
+    private final Map<String, Object> parameters;
 
     public int[] lATA;
     @Bind public int LL; // number of years
@@ -24,7 +25,10 @@ public class Model {
     public double temp; // this field is not associated with the data model or with the results
 
     public Model(){
-        parameters = new HashMap<>();
+        parameters = new LinkedHashMap<>();
+    }
+
+    public void refreshParameters() {
         parameters.put("LL", LL);
         parameters.put("twKI", twKI);
         parameters.put("twKS", twKS);
@@ -45,15 +49,23 @@ public class Model {
 
     @Override
     public String toString(){
-        return parameters.toString();
+        StringBuilder sb = new StringBuilder();
+
+        parameters.forEach((key, value) -> {
+            sb.append(key).append("=");
+            if(value instanceof double[]){
+                sb.append(Arrays.toString((double[])value));
+            } else {
+                sb.append(value.toString());
+            }
+            sb.append("\n");
+        });
+
+        return sb.toString();
     }
 
     public void addToParameters(String param, Object value){
         parameters.put(param, value);
-    }
-
-    public Map<String, Object> getParameters() {
-        return parameters;
     }
 
     public void setLATA(int[] LATA){
