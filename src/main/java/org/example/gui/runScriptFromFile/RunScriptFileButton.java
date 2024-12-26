@@ -1,31 +1,28 @@
-package org.example.gui.leftPanel;
+package org.example.gui.runScriptFromFile;
 
 import org.example.backend.BackEnd;
 import org.example.gui.MyJButton;
-import org.example.gui.MyJList;
 import org.example.gui.Window;
 import org.example.gui.rightPanel.OutPutList;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class RunButton extends MyJButton {
+public class RunScriptFileButton extends MyJButton {
     private final BackEnd backEnd;
-    private final MyJList modelsList;
-    private final MyJList dataList;
 
-    public RunButton(int x, int y, int width, int height, String text, MyJList modelsList, MyJList dataList, BackEnd backEnd) {
+    public RunScriptFileButton(int x, int y, int width, int height, String text, BackEnd backEnd) {
         super(text);
-        setBounds(x,y,width,height);
-        this.modelsList = modelsList;
-        this.dataList = dataList;
+        setBounds(x, y, width, height);
         this.backEnd = backEnd;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(modelsList.getSelectedIndex() != -1 && dataList.getSelectedIndex() != -1){
-            String[][] str = backEnd.runActionPerformed(modelsList.getSelectedValue(), dataList.getSelectedValue());
+        String path = new FileChooser().chooseFile();
+        if (path != null) {
+            backEnd.getController().runScriptFromFile(path);
+            String[][] str = backEnd.runScriptPerformed();
             String[] columns = backEnd.getColumns(backEnd.getController());
 
             OutPutList newTable = new OutPutList(str, columns);

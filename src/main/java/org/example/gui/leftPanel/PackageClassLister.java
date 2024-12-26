@@ -20,6 +20,7 @@ public class PackageClassLister {
 
             classNames = scanResult.getAllClasses().stream()
                     .map(classInfo -> classInfo.getName().substring(classInfo.getName().lastIndexOf('.') + 1))
+                    .filter(name -> !name.equals("Model"))
                     .toList();
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -43,7 +44,6 @@ public class PackageClassLister {
         for (String className : classNames) {
             listModel.addElement(className);
         }
-
         return listModel;
     }
 }
