@@ -1,8 +1,11 @@
-package org.example.gui.runScriptFromFile;
+package org.example.gui.runScriptString;
 
 import org.example.backend.BackEnd;
 import org.example.gui.MyJButton;
+import org.example.gui.Window;
+import org.example.gui.runScriptString.jDialog.MyJDialog;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class RunScriptStringButton extends MyJButton {
@@ -15,6 +18,6 @@ public class RunScriptStringButton extends MyJButton {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new TextPane();
+        new MyJDialog((Window)SwingUtilities.getWindowAncestor(this), "GG", true, backEnd);
     }
 }
