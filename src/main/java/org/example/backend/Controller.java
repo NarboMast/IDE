@@ -41,12 +41,8 @@ public class Controller {
 
     public void runScript(String script){
         String firstWord = script.split(" ", 2)[0];
-        System.out.println(firstWord);
         ScriptRunner scriptRunner = new ScriptRunner(model);
         double[] d = scriptRunner.run(script);
-        for(double di : d){
-            System.out.println(di);
-        }
         model.addToParameters(firstWord, d);
     }
 

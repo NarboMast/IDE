@@ -18,11 +18,12 @@ public class MyJDialog extends JDialog {
         pane.setBounds(10,10,getWidth()-37,getHeight()-100);
         pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        OkButton okButton = new OkButton(10, pane.getHeight() + 20, 100, 30, "OK", area, backEnd, parent);
-
+        OkButton okButton = new OkButton(40, pane.getHeight() + 20, 100, 30, "OK", area, backEnd, parent);
+        CancelButton cancelButton = new CancelButton(okButton.getX()+150,pane.getHeight() + 20, 100, 30, "Cancel", this);
 
         add(pane);
         add(okButton);
+        add(cancelButton);
 
         setVisible(true);
     }
