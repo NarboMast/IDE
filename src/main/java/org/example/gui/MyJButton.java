@@ -1,9 +1,19 @@
 package org.example.gui;
 
-import javax.swing.JButton;
+import org.example.backend.BackEnd;
 
-public class MyJButton extends JButton {
+import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MyJButton extends JButton implements ActionListener {
     public MyJButton(String text) {
         super(text);
+        addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Default button is clicked");
     }
 }

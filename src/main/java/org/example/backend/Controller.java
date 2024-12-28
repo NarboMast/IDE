@@ -49,4 +49,8 @@ public class Controller {
     public String getResultAsTsv(){
         return model.toString();
     }
+
+    public Model getModel(){
+        return model;
+    }
 }

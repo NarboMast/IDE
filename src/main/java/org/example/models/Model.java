@@ -2,14 +2,13 @@ package org.example.models;
 
 import org.example.annotations.Bind;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Model {
     private final Map<String, Object> parameters;
 
-    public int[] lATA;
+    public int[] LATA;
     @Bind public int LL; // number of years
     @Bind public double[] twKI; // the growth rate of private consumption
     @Bind public double[] twKS; // the growth rate of public consumption
@@ -29,7 +28,6 @@ public class Model {
     }
 
     public void refreshParameters() {
-        parameters.put("LL", LL);
         parameters.put("twKI", twKI);
         parameters.put("twKS", twKS);
         parameters.put("twINW", twINW);
@@ -52,9 +50,11 @@ public class Model {
         StringBuilder sb = new StringBuilder();
 
         parameters.forEach((key, value) -> {
-            sb.append(key).append("=");
-            if(value instanceof double[]){
-                sb.append(Arrays.toString((double[])value));
+            sb.append(key).append(" ");
+            if(value instanceof double[] ds){
+                for(double d : ds){
+                    sb.append(d).append(" ");
+                }
             } else {
                 sb.append(value.toString());
             }
@@ -68,8 +68,12 @@ public class Model {
         parameters.put(param, value);
     }
 
+    public int[] getLATA(){
+        return LATA;
+    }
+
     public void setLATA(int[] LATA){
-        this.lATA = LATA;
+        this.LATA = LATA;
     }
     public void setLL(int LL) {
         this.LL = LL;
