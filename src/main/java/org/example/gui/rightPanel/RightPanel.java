@@ -3,7 +3,7 @@ package org.example.gui.rightPanel;
 import org.example.backend.BackEnd;
 import org.example.gui.MyJPanel;
 import org.example.gui.runScriptFromFile.RunScriptFileButton;
-import org.example.gui.runScriptFromFile.RunScriptStringButton;
+import org.example.gui.runScriptString.RunScriptStringButton;
 
 import javax.swing.*;
 
